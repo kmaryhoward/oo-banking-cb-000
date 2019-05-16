@@ -12,6 +12,10 @@ class Transfer
   def valid?
     self.sender = BankAccount.new(sender)
     self.receiver = BankAccount.new(receiver)
+    if self.sender.valid? && self.receiver.valid?
+      true
+    else
+      false
   end
 
   def execute_transaction
