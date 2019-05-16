@@ -8,14 +8,12 @@ class Transfer
     @amount = 50
   end
 
-
   def valid?
-
     sender.valid? && receiver.valid?
   end
 
   def execute_transaction
-    if sender.valid? && self.status != "complete"
+    if valid? && self.status != "complete"
       sender.balance -= amount
       receiver.deposit(amount)
       self.status = "complete"
